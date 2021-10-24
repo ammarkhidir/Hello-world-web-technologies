@@ -1,2 +1,3 @@
 # Hello-world-web-technologies
-this is the first milestone in the webtechnologien subject using spring boot.
+Ich werde eine Webseite erstellen,, auf der man kann Giphy teilen und filtern.
+
