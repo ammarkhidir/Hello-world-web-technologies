@@ -2,5 +2,5 @@
 
 Das ist die erste Abgabe der Webtechnologien.
 
-Ich werde am Ende eine Webseite erstellen,, auf der man kann Giphy teilen und filtern.
+Ich werde am Ende eine Webseite erstellen,, auf der man Giphy teilen und filtern kann .
 
