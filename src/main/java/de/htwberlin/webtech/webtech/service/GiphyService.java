@@ -1,13 +1,12 @@
 package de.htwberlin.webtech.webtech.service;
 
-import de.htwberlin.webtech.webtech.persistence.PersonEntity;
+import de.htwberlin.webtech.webtech.persistence.FavouriteGiphyEntity;
 import de.htwberlin.webtech.webtech.persistence.PersonRepository;
-import de.htwberlin.webtech.webtech.web.api.Person;
-import de.htwberlin.webtech.webtech.web.api.PersonManipulationRequest;
+import de.htwberlin.webtech.webtech.web.api.FavouriteGiphy;
+import de.htwberlin.webtech.webtech.web.api.GiphyManipulationRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,35 +17,34 @@ public class PersonService {
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
-    public List<Person> findAll(){
-        List<PersonEntity> persons = personRepository.findAll();
+    public List<FavouriteGiphy> findAll(){
+        List<FavouriteGiphyEntity> persons = personRepository.findAll();
         return persons.stream()
                 .map(this::transformEntity)
                 .collect(Collectors.toList());
     }
-    public Person findById(Long id){
+    public FavouriteGiphy findById(Long id){
         var personEntity= personRepository.findById(id);
         return personEntity.map(this::transformEntity).orElse(null);
     }
 
 
-    public Person create(PersonManipulationRequest request){
-        var personEntity = new PersonEntity(request.getFirstName(), request.getLastName(), request.isVaccinated());
+    public FavouriteGiphy create(GiphyManipulationRequest request){
+        var personEntity = new FavouriteGiphyEntity(request.getTitle(), request.getLink());
         personEntity = personRepository.save(personEntity);
         return transformEntity(personEntity);
     }
-    public Person update (Long id, PersonManipulationRequest request){
+    public FavouriteGiphy update (Long id, GiphyManipulationRequest request){
         var personEntityOptional = personRepository.findById(id);
         if (personEntityOptional.isEmpty()){
             return null;
         }
-        var personEntity  = personEntityOptional.get();
-        personEntity.setFirstName(request.getFirstName());
-        personEntity.setLastName(request.getLastName());
-        personEntity.setVaccinated(request.isVaccinated());
-        personEntity = personRepository.save(personEntity);
+        var favouriteGiphyEntity  = personEntityOptional.get();
+        favouriteGiphyEntity.setTitle(request.setTitle());
+        favouriteGiphyEntity.setLink(request.setLink());
+        favouriteGiphyEntity = personRepository.save(favouriteGiphyEntity);
 
-        return transformEntity(personEntity);
+        return transformEntity(favouriteGiphyEntity);
     }
     public boolean deleteById(Long id) {
         if (!personRepository.existsById(id)) {
@@ -56,12 +54,12 @@ public class PersonService {
         personRepository.deleteById(id);
         return true;
     }
-    private Person transformEntity(PersonEntity personEntity) {
-        return new Person(
+    private FavouriteGiphy transformEntity(FavouriteGiphyEntity personEntity) {
+        return new FavouriteGiphy(
                 personEntity.getId(),
-                personEntity.getFirstName(),
-                personEntity.getLastName(),
-                personEntity.getVaccinated()
+                personEntity.getTitle(),
+                personEntity.getLink()
+
         );
     }
 }
