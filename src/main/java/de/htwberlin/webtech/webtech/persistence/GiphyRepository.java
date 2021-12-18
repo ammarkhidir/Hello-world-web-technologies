@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface PersonRepository extends JpaRepository<FavouriteGiphyEntity, Long> {
+public interface GiphyRepository extends JpaRepository<FavouriteGiphyEntity, Long> {
 
-    List<FavouriteGiphyEntity> findAllByFirstName(String firstName);
+    List<FavouriteGiphyEntity> findAllByTitle (String title);
 }

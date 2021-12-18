@@ -1,47 +1,36 @@
 package de.htwberlin.webtech.webtech.web.api;
 
-public class  Person {
+public class FavouriteGiphy {
     private long id;
-    private String firstName;
-    private String lastName;
-    private boolean vaccinated;
+    private String title;
 
-    public Person(long id, String firstName, String lastName, boolean vaccinated) {
+    private String link;
+
+    public FavouriteGiphy(long id, String title, String link) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.vaccinated = vaccinated;
+        this.title = title;
+        this.link = link;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+
+
+    public String getTitle() {
+        return title;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getLink() {
+        return link;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public boolean isVaccinated() {
-        return vaccinated;
-    }
-
-    public void setVaccinated(boolean vaccinated) {
-        this.vaccinated = vaccinated;
+    public void setLink(String link) {
+        this.link = link;
     }
 }

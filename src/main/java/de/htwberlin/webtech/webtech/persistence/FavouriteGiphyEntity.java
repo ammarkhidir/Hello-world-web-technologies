@@ -2,57 +2,48 @@ package de.htwberlin.webtech.webtech.persistence;
 
 import javax.persistence.*;
 
-@Entity(name = "persons")
-public class PersonEntity {
+@Entity(name = "giphys")
+public class FavouriteGiphyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
+    @Column(name = "title", nullable = false)
+    private String title;
 
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
+    @Column(name = "link", nullable = false)
+    private String link;
 
-    @Column(name = "is_vaccinated")
-    private Boolean vaccinated;
+    public FavouriteGiphyEntity( String title, String link) {
 
-    public PersonEntity(String firstName, String lastName, Boolean vaccinated) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.vaccinated = vaccinated;
+        this.title = title;
+        this.link = link;
     }
 
+    public FavouriteGiphyEntity() {
+
+    }
 
     public Long getId() {
         return id;
     }
 
-    protected PersonEntity() {}
 
-    public String getFirstName() {
-        return firstName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLink() {
+        return link;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Boolean getVaccinated() {
-        return vaccinated;
-    }
-
-    public void setVaccinated(Boolean vaccinated) {
-        this.vaccinated = vaccinated;
+    public void setLink(String link) {
+        this.link = link;
     }
 }

@@ -1,38 +1,35 @@
 package de.htwberlin.webtech.webtech.web.api;
 
-public class PersonManipulationRequest {
+public class GiphyManipulationRequest {
 
-    private String firstName;
-    private String lastName;
-    private boolean vaccinated;
+    private String title;
+    private String link;
 
-    public PersonManipulationRequest(String firstName, String lastName, boolean vaccinated) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.vaccinated = vaccinated;
+    public GiphyManipulationRequest(String title, String link) {
+        this.title = title;
+        this.link = link;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public GiphyManipulationRequest() {
+
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+
+    public String getTitle() {
+        return title;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getLink() {
+        return link;
     }
 
-    public boolean isVaccinated() {
-        return vaccinated;
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    public void setVaccinated(boolean vaccinated) {
-        this.vaccinated = vaccinated;
-    }
+
 }

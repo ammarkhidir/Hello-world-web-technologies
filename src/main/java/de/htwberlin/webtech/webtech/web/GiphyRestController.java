@@ -1,6 +1,6 @@
 package de.htwberlin.webtech.webtech.web;
 
-import de.htwberlin.webtech.webtech.service.PersonService;
+import de.htwberlin.webtech.webtech.service.GiphyService;
 import de.htwberlin.webtech.webtech.web.api.FavouriteGiphy;
 import de.htwberlin.webtech.webtech.web.api.GiphyManipulationRequest;
 import org.springframework.http.ResponseEntity;
@@ -11,38 +11,38 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-public class PersonRestController {
+public class GiphyRestController {
 
-    private final PersonService personService;
+    private final GiphyService giphyService;
 
-    public PersonRestController(PersonService personService) {
-        this.personService = personService;
+    public GiphyRestController(GiphyService personService) {
+        this.giphyService = personService;
     }
 
 
-    @GetMapping(path = "/api/v1/persons")
+    @GetMapping(path = "/api/v1/giphys")
     public ResponseEntity<List<FavouriteGiphy>> fetchPersons() {
-        return ResponseEntity.ok(personService.findAll());
+        return ResponseEntity.ok(giphyService.findAll());
     }
-    @GetMapping(path = "/api/v1/persons/{id}")
+    @GetMapping(path = "/api/v1/giphys/{id}")
     public ResponseEntity<FavouriteGiphy> fetchPersonById(@PathVariable Long id) {
-        var person = personService.findById(id);
+        var person = giphyService.findById(id);
         return person != null? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
     }
-    @PostMapping(path = "/api/v1/persons")
+    @PostMapping(path = "/api/v1/giphys")
     public ResponseEntity<Void> createPerson(@RequestBody GiphyManipulationRequest request)throws URISyntaxException{
-    var person  = personService.create(request);
-    URI uri= new URI("/api/v1/persons" + person.getId());
+    var person  = giphyService.create(request);
+    URI uri= new URI("/api/v1/giphys" + person.getId());
     return ResponseEntity.created(uri).build();
     }
-    @PutMapping(path = "/api/v1/persons/{id}")
+    @PutMapping(path = "/api/v1/giphys/{id}")
         public ResponseEntity<FavouriteGiphy> updatePerson(@PathVariable Long id, @RequestBody GiphyManipulationRequest request) {
-            var person = personService.update(id, request);
+            var person = giphyService.update(id, request);
         return person != null? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
     }
-    @DeleteMapping(path = "/api/v1/persons/{id}")
+    @DeleteMapping(path = "/api/v1/giphys/{id}")
     public ResponseEntity<Void> deletePerson(@PathVariable Long id) {
-        boolean successful = personService.deleteById(id);
+        boolean successful = giphyService.deleteById(id);
         return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 }
