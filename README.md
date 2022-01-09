@@ -10,7 +10,7 @@ Auf der Datenbank wird die Favoriten von Giphy gespeichert.
 
 #Start Application on your local Machine
 
-[localhost:8080](localhost:8080)git 
+[localhost:8080](localhost:8080) 
 #To start Backend app: 
 ```
 run ProjectForWebTechApplication
