@@ -3,12 +3,21 @@
 # ReadMe
 
 
-# Hello-world-web-technologies
+# Giphy Backend
 
-
-Das ist die erste Abgabe der Webtechnologien.
-
-Ich werde am Ende eine Webseite erstellen,, auf der man Giphy teilen und filtern kann.
+Ich werde am Ende eine Webseite erstellen,auf der man Giphy teilen und filtern kann.
 Auf der Datenbank wird die Favoriten von Giphy gespeichert.
 
+#Start Application on your local Machine
+
+[localhost:8080](localhost:8080)git 
+#To start Backend app: 
+```
+run ProjectForWebTechApplication
+```
+
+#To start Backend test: 
+```
+run ProjectForWebTechApplicationTests
+```
 
