@@ -24,8 +24,8 @@ public class GiphyService {
                 .collect(Collectors.toList());
     }
     public FavouriteGiphy findById(Long id){
-        var personEntity= giphyRepository.findById(id);
-        return personEntity.map(this::transformEntity).orElse(null);
+        var giphyEntity= giphyRepository.findById(id);
+        return giphyEntity.map(this::transformEntity).orElse(null);
     }
 
 
@@ -35,11 +35,11 @@ public class GiphyService {
         return transformEntity(giphyEntity);
     }
     public FavouriteGiphy update (Long id, GiphyManipulationRequest request){
-        var personEntityOptional = giphyRepository.findById(id);
-        if (personEntityOptional.isEmpty()){
+        var giphyEntityOptional = giphyRepository.findById(id);
+        if (giphyEntityOptional.isEmpty()){
             return null;
         }
-        var favouriteGiphyEntity  = personEntityOptional.get();
+        var favouriteGiphyEntity  = giphyEntityOptional.get();
         favouriteGiphyEntity.setTitle(request.getTitle());
         favouriteGiphyEntity.setLink(request.getLink());
         favouriteGiphyEntity = giphyRepository.save(favouriteGiphyEntity);
@@ -54,11 +54,11 @@ public class GiphyService {
         giphyRepository.deleteById(id);
         return true;
     }
-    private FavouriteGiphy transformEntity(FavouriteGiphyEntity personEntity) {
+    public FavouriteGiphy transformEntity(FavouriteGiphyEntity giphyEntity) {
         return new FavouriteGiphy(
-                personEntity.getId(),
-                personEntity.getTitle(),
-                personEntity.getLink()
+                giphyEntity.getId(),
+                giphyEntity.getTitle(),
+                giphyEntity.getLink()
 
         );
     }

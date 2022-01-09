@@ -1,11 +1,15 @@
 package de.htwberlin.webtech.webtech.web.api;
 
-public class GiphyManipulationRequest {
+import javax.validation.constraints.NotBlank;
 
+public class GiphyManipulationRequest {
+    @NotBlank(message = "The title must not be empty.")
     private String title;
+    @NotBlank(message = "The link must not be empty.")
     private String link;
 
     public GiphyManipulationRequest(String title, String link) {
+
         this.title = title;
         this.link = link;
     }
